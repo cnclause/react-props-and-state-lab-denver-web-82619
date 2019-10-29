@@ -1,11 +1,27 @@
-import React from 'react'
-
+import React, {Component} from 'react'
 import Pet from './Pet'
 
-class PetBrowser extends React.Component {
+
+export default class PetBrowser extends Component {
+  
   render() {
-    return <div className="ui cards">PET COMPONENT SHOULD GO HERE</div>
-  }
+
+    console.log("arrayofpets", this.props.pets)
+
+    const petsArray = this.props.pets
+    ? this.props.pets.map(pet => {
+      console.log('inside pet'),
+      <Pet pet={pet} key={pet.id}/>
+      }) : null
+        
+
+    return (
+    <div className="ui cards">
+        {console.log("here")}
+       {petsArray, console.log("inside array pets")} 
+       {console.log("below")}
+    </div>
+    )
+  } 
 }
 
-export default PetBrowser

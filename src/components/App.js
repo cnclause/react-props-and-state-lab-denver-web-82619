@@ -1,19 +1,30 @@
-import React from 'react'
-
+import React, {Component} from 'react'
 import Filters from './Filters'
 import PetBrowser from './PetBrowser'
 
-class App extends React.Component {
+export default class App extends Component {
   constructor() {
     super()
-
     this.state = {
       pets: [],
       filters: {
         type: 'all'
       }
     }
+  } 
+
+  onAdoptPet = () => {
+    console.log("hi")
   }
+
+  onFindPetsClick = () => {
+    fetch('/api/pets')
+      .then(response => response.json())
+      .then(allpets => this.setState({
+        pets: allpets
+      }) )
+  }
+
 
   render() {
     return (
@@ -24,10 +35,12 @@ class App extends React.Component {
         <div className="ui container">
           <div className="ui grid">
             <div className="four wide column">
-              <Filters />
+              <Filters onFindPetsClick={this.onFindPetsClick} />
             </div>
             <div className="twelve wide column">
-              <PetBrowser />
+              <PetBrowser 
+              pets={this.state.pets} 
+              onAdoptPet={this.onAdoptPet}/>
             </div>
           </div>
         </div>
@@ -36,4 +49,3 @@ class App extends React.Component {
   }
 }
 
-export default App
