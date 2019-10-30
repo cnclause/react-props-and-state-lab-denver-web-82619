@@ -16,14 +16,19 @@ export default class App extends Component {
   onAdoptPet = () => {
     console.log("hi")
   }
+componentDidMount(){
+  this.fetchPets()
 
-  onFindPetsClick = () => {
-    fetch('/api/pets')
-      .then(response => response.json())
-      .then(allpets => this.setState({
-        pets: allpets
-      }) )
-  }
+}
+
+fetchPets = () => {
+  fetch('/api/pets')
+    .then(response => response.json())
+    .then(allpets => this.setState({
+      pets: allpets
+    }))
+}
+  
 
 
   render() {
@@ -35,7 +40,7 @@ export default class App extends Component {
         <div className="ui container">
           <div className="ui grid">
             <div className="four wide column">
-              <Filters onFindPetsClick={this.onFindPetsClick} />
+              <Filters onFindPetsClick={this.fetchPets} />
             </div>
             <div className="twelve wide column">
               <PetBrowser 

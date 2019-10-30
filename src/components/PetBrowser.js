@@ -8,17 +8,16 @@ export default class PetBrowser extends Component {
 
     console.log("arrayofpets", this.props.pets)
 
-    const petsArray = this.props.pets
-    ? this.props.pets.map(pet => {
+    const petCards = this.props.pets.map(pet => {
       console.log('inside pet'),
-      <Pet pet={pet} key={pet.id}/>
-      }) : null
+      <Pet pet={pet} key={pet.id} onAdoptPet={this.props.onAdoptPet}/>
+    }) 
         
 
     return (
     <div className="ui cards">
         {console.log("here")}
-       {petsArray, console.log("inside array pets")} 
+       {petCards, console.log("inside array pets")} 
        {console.log("below")}
     </div>
     )
