@@ -44,8 +44,8 @@ fetchPets = () => {
             </div>
             <div className="twelve wide column">
               <PetBrowser 
-              pets={this.state.pets} 
-              onAdoptPet={this.onAdoptPet}/>
+              pets={this.state.pets} />
+         
             </div>
           </div>
         </div>

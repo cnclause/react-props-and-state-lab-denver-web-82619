@@ -3,24 +3,21 @@ import Pet from './Pet'
 
 
 export default class PetBrowser extends Component {
+
+    petCards = () =>{
+      return this.props.pets.map(pet => <Pet {...pet}/>)
+    }
   
-  render() {
-
-    console.log("arrayofpets", this.props.pets)
-
-    const petCards = this.props.pets.map(pet => {
-      console.log('inside pet'),
-      <Pet pet={pet} key={pet.id} onAdoptPet={this.props.onAdoptPet}/>
-    }) 
         
+    render(){
+      return (
+        <div className="ui cards">
+           {this.petCards()} 
+        </div>
+        )
+      } 
+    }
 
-    return (
-    <div className="ui cards">
-        {console.log("here")}
-       {petCards, console.log("inside array pets")} 
-       {console.log("below")}
-    </div>
-    )
-  } 
-}
+    
+   
 
